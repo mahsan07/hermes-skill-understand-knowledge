@@ -1,70 +1,49 @@
 # How Understand Knowledge Works
 
-The visuals on this page are static SVGs, so they render directly on GitHub on phones and desktop browsers. Each one is generated from a model specific to this skill.
+Analyze a Karpathy-pattern LLM wiki and generate a knowledge graph with entities and topic clusters.
 
-## System architecture
+![Detailed systems blueprint for Understand Knowledge](../assets/system-blueprint.png)
 
-![Detailed system map for Understand Knowledge](../assets/system-map.svg)
-
-### Components
-
-- **1. Markdown knowledge base:** participates in index notes headings links and citations.
-- **2. Entity extractor:** participates in extract people concepts artifacts and claims.
-- **3. Explicit and implicit links:** participates in connect explicit backlinks and inferred relations.
-- **4. Topic clustering:** participates in score and label implicit relationships.
-- **5. Knowledge dashboard:** participates in cluster topics and bridge nodes.
-
-## Actor and data sequence
-
-![Actor and data sequence for Understand Knowledge](../assets/operation-sequence.svg)
+## Stages
 
 ### 1. Index notes headings links and citations
 
 **Primary surface:** `Markdown knowledge base`
 
-Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+Record the input, operation, observable output, and any decision that changes scope. Stop here if the output is missing, contradictory, or insufficient for the next stage.
 ### 2. Extract people concepts artifacts and claims
 
 **Primary surface:** `Entity extractor`
 
-Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+Record the input, operation, observable output, and any decision that changes scope. Stop here if the output is missing, contradictory, or insufficient for the next stage.
 ### 3. Connect explicit backlinks and inferred relations
 
 **Primary surface:** `Explicit and implicit links`
 
-Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+Record the input, operation, observable output, and any decision that changes scope. Stop here if the output is missing, contradictory, or insufficient for the next stage.
 ### 4. Score and label implicit relationships
 
 **Primary surface:** `Topic clustering`
 
-Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+Record the input, operation, observable output, and any decision that changes scope. Stop here if the output is missing, contradictory, or insufficient for the next stage.
 ### 5. Cluster topics and bridge nodes
 
 **Primary surface:** `Knowledge dashboard`
 
-Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+Record the input, operation, observable output, and any decision that changes scope. Stop here if the output is missing, contradictory, or insufficient for the next stage.
 ### 6. Render a queryable knowledge graph
 
-**Primary surface:** `Markdown knowledge base`
+**Primary surface:** `Knowledge dashboard`
 
-Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+Record the input, operation, observable output, and any decision that changes scope. Stop here if the output is missing, contradictory, or insufficient for the next stage.
 
-## Example output shape
+## Failure handling
 
-![Illustrative output for Understand Knowledge](../assets/example-output.svg)
+- **Authorization failure:** do not probe credentials or broaden access; report the missing authority.
+- **Target ambiguity:** stop before mutation and request the minimum identifying information.
+- **Tool or service failure:** retain error evidence, retry only safe transient failures, and cap retries.
+- **Verification failure:** classify the run as incomplete even when the preceding operation returned success.
 
-The example is a visual contract: a real run may look different, but it should expose comparable state, provenance, and verification information. It is not presented as evidence of a live external action.
+## Completion evidence
 
-## Decision and stop conditions
-
-![Decision guide for Understand Knowledge](../assets/decision-guide.svg)
-
-The workflow stops when the target is ambiguous, the relevant surface is unavailable or unauthorized, or the final artifact cannot be checked. A logged-in session or successful tool call is not by itself proof that the requested outcome is complete.
-
-## Verification checklist
-
-- Confirm every component shown in the system map exists in the target environment.
-- Trace the actor sequence using actual tool output or artifact state.
-- Compare the result with the example-output information contract.
-- Re-read or reopen the final artifact instead of trusting an attempt message.
-- Report omitted stages, unsupported capabilities, and remaining human decisions.
+The handoff should contain the original request, inspection state, preview or plan, exact execution result, direct verification, and a final receipt naming limitations and withheld actions.
